@@ -10,20 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Step 1: Check out the code
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Step 2: Set up JDK 17
+    # Step 1: Set up JDK 17 (change this to JDK 23 if you are sure it's available and required)
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
-        distribution: 'temurin' # You can change this to another distribution if needed
-        cache: maven # Cache Maven dependencies to improve build speed
+        java-version: '17'  # You can change to '23' if Java 23 is supported on the runner
+        distribution: 'temurin'
+        cache: maven
 
-    # Step 3: Cache Maven dependencies
+    # Step 2: Cache Maven dependencies
     - name: Cache Maven dependencies
       uses: actions/cache@v3
       with:
@@ -32,22 +31,21 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    # Step 4: Run Maven build and tests
+    # Step 3: Run Maven build and tests
     - name: Build with Maven
-      run: mvn -B clean install # You can change to `mvn package` or `mvn verify` depending on your needs
+      run: mvn -B clean install
 
-    # Step 5: (Optional) Submit Dependency Graph to GitHub for security alerts
+    # Step 4: Optional: Submit Dependency Graph to GitHub for security alerts
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
 
-    # Step 6: Run tests (Optional, if you have tests set up)
+    # Step 5: Run tests
     - name: Run tests
-      run: mvn test # This will run the tests if you have any set up
+      run: mvn test
 
-    # Step 7: Upload build artifacts (Optional)
+    # Step 6: Optional: Upload build artifacts
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
         name: encrypted-image-artifacts
-        path: target/*.jar # Assuming your build produces a JAR file. Change this if needed.
-
+        path: target/*.jar
