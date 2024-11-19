@@ -1,4 +1,4 @@
-package estga.ua;
+package image_encryptor;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
