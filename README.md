@@ -107,10 +107,6 @@ Feel free to fork the project and submit a pull request if you have ideas for im
 4. Push to the branch
 5. Create a pull request
 
-## 💬 Contact
-
-- **Developer:** [Daniel Silva](https://github.com/sDanielSilva)
-- **Email:** d.m.silva@ua.pt
 
 ---
 
