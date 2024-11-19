@@ -110,6 +110,3 @@ Feel free to fork the project and submit a pull request if you have ideas for im
 
 ---
 
-### ⭐️ Support This Project
-
-If you like the project, please ⭐️ it! Any support is greatly appreciated.
